@@ -33,6 +33,9 @@ public class R<T> {
         return new R<T>(RCodeEnum.SUCCESS, data);
     }
 
+    public static <T> R<T> success() {
+        return new R<T>(RCodeEnum.SUCCESS, null);
+    }
 
     public static <T> R<T> fail(T data) {
         return new R<T>(RCodeEnum.FAIL, null);

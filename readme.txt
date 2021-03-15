@@ -1,0 +1,10 @@
+api:1000
+config:1005
+nacos:8848
+cms:3000
+fms:3010
+lms:3020
+auth:3030
+gateWay:3040
+route:3050
+dms:3060

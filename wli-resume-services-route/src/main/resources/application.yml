@@ -1,0 +1,5 @@
+server:
+  port: 3050
+spring:
+  application:
+    name: resume-services-route

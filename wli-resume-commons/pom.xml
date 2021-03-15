@@ -26,4 +26,18 @@
     </dependencies>
 
 
+    <!--公共类的可执行jar无法被其他模块使用 需达成exec提供给其他模块使用-->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <classifier>exec</classifier>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
 </project>
