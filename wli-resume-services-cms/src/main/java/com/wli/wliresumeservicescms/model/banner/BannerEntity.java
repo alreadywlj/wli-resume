@@ -1,4 +1,4 @@
-package com.wli.model.cms.banner;
+package com.wli.wliresumeservicescms.model.banner;
 
 import lombok.*;
 
@@ -10,12 +10,10 @@ import java.io.Serializable;
  */
 @Data
 @ToString
-@AllArgsConstructor
-@NoArgsConstructor
-@EqualsAndHashCode
 public class BannerEntity implements Serializable {
 
     private static final long seriaVersionUID = 1L;
+
 
     private Integer id;  //Id PK
 

@@ -43,6 +43,7 @@
         <druid.version>1.1.23</druid.version>
         <mybatis.version>3.4.5</mybatis.version>
         <mysql-connector-java.version>5.1.40</mysql-connector-java.version>
+        <lombok.version>1.18.12</lombok.version>
     </properties>
 
 
@@ -102,6 +103,15 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid</artifactId>
                 <version>${druid.version}</version>
+            </dependency>
+
+
+            <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <scope>provided</scope>
             </dependency>
 
         </dependencies>

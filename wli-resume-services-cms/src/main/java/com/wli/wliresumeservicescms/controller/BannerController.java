@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.NotNull;
 
+/**
+ * @author wli
+ */
 @RestController
 @RequestMapping("/cms/banner")
 @CrossOrigin
@@ -20,12 +23,12 @@ public class BannerController {
     }
 
     @PutMapping("/{id}")
-    public R updateBanner(@PathVariable String id) {
+    public R updateBanner(@PathVariable("id") String id) {
         return R.success();
     }
 
     @DeleteMapping("/{id}")
-    public R delBanner(@PathVariable String id, @RequestBody BannerDTO bannerDTO) {
+    public R delBanner(@PathVariable("id") String id, @RequestBody BannerDTO bannerDTO) {
         return R.success();
     }
 
