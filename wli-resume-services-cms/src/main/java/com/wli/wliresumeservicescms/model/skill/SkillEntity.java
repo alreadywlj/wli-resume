@@ -12,7 +12,7 @@ public class SkillEntity {
     private Integer id;
 
     //排序
-    private Integer order;
+    private Integer px;
 
     //技能内容
     private String content;

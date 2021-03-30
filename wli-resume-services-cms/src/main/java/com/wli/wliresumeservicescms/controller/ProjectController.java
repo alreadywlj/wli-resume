@@ -13,8 +13,6 @@ import javax.annotation.Resource;
 @RequestMapping("/cms/project")
 public class ProjectController {
 
-    @Resource
-
 
     @GetMapping
     public R qryProjects() {

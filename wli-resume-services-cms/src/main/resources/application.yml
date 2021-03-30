@@ -19,12 +19,6 @@ spring:
     username: root
     password: root
     # 初始化大小，最小，最大
-  jpa:
-    database: mysql
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-
 
 #    initialSize: 30
 #    minIdle: 3
