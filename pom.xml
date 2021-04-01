@@ -28,6 +28,7 @@
         <module>wli-resume-services-gateway</module>
         <module>wli-resume-services-lms</module>
         <module>wli-resume-services-route</module>
+        <module>wli-resume-admin-server</module>
     </modules>
 
     <properties>
@@ -44,6 +45,7 @@
         <mybatis.version>3.4.5</mybatis.version>
         <mysql-connector-java.version>5.1.40</mysql-connector-java.version>
         <lombok.version>1.18.12</lombok.version>
+        <spring-boot-admin.version>2.2.1</spring-boot-admin.version>
     </properties>
 
 
@@ -56,6 +58,14 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-dependencies</artifactId>
+                <version>${spring-boot-admin.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>

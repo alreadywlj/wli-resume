@@ -1,10 +1,10 @@
-package com.wli.wliresumeservicesgateway;
+package com.wli.wliresumeadminserver;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class WliResumeServicesGatewayApplicationTests {
+class WliResumeAdminServerApplicationTests {
 
     @Test
     void contextLoads() {

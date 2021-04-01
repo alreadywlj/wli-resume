@@ -4,6 +4,7 @@ server:
 spring:
   application:
     name: resume-services-cms
+
   cloud:
     nacos:
       discovery:
@@ -15,38 +16,58 @@ spring:
   datasource:
     driver-class-name: org.gjt.mm.mysql.Driver
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://47.93.184.182:3306/wli_resume_cms?useUnicode=true&characterEncoding-utr-8&useSSL=false
+    url: jdbc:mysql://47.93.184.182:3306/wli_resume_cms?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
     username: root
     password: root
-    # 初始化大小，最小，最大
-
-#    initialSize: 30
-#    minIdle: 3
-#    maxActive: 20
-#    # 配置获取连接等待超时的时间
-#    maxWait: 60000
-#    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
-#    timeBetweenEvictionRunsMillis: 60000
-#    # 配置一个连接在池中最小生存的时间，单位是毫秒
-#    minEvictableIdleTimeMillis: 30000
-#   # validationQuery: select 'x'
-#    testWhileIdle: true
-#    testOnBorrow: false
-#    testOnReturn: false
-#    # 打开PSCache，并且指定每个连接上PSCache的大小
-#    poolPreparedStatements: true
-#    maxPoolPreparedStatementPerConnectionSize: 20
-#    # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
-#    filters: stat,wall,slf4j
-#    # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
-#    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
-#    # 合并多个DruidDataSource的监控数据
-#    #useGlobalDataSourceStat: true
+    initialization-mode: always
+    #数据源其他配置
+    druid:
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+      max-wait: 60000
+      time-between-eviction-runs-millis: 600000
+      min-evictable-idle-time-millis: 300000
+      validation-query: select 1 from dual
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      #配置监控统计拦截的filters,去掉后监控界面sql无法统计,'wall'用于防火墙
+      filter: stat,wall,log4j
+      max-pool-prepared-statement-per-connection-size: 20
+      use-global-data-source-stat: true
+  http:
+    #设置响应为utf-8
+    encoding:
+      force-response: true
+      force-request: true
+  #将client作为服务注册到server
+  boot:
+    admin:
+      client:
+        url: http://localhost:8050
 
 management:
   endpoints:
     web:
       exposure:
+        #打开所有的监控节点
         include: '*'
+      #修改访问路径 之前未 /actuator/* 修改后为:/minitor/*
+      #heapdump 会自动生成一个jvm的堆文件
+      #threaddump 生成当前线程活动的快照
+      base-path: /monitor
+    #展示细节
+    health:
+      show-details: always
+    #关闭springboot应用 curl -X POST "localhost:8080/monitor/shutdown"
+    shutdown:
+      enabled: true
+
+
 mybatis:
   mapper-locations: classpath:mapper/*.xml
+logging:
+  level:
+    com.wli.wliresumeservicescms.mapper: debug
